@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Cube_4.models.Commande>
+
+@{
+    ViewData["Title"] = "Commandes";
+}
+
+<h1>Commandes</h1>
+
+<p>
+    <a asp-action="Create">Ajouter une commande</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Article)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantite)
+            </th>
+            <th>
+                Utilisateur
+            </th>
+            <th>
+                Commande Fournisseur
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Article.Libelle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantite)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isFournisseur)
+            </td>
+            <td>
+                <a asp-action="DeleteCommand" asp-route-id="@item.Id">Supprimer</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,54 @@
+﻿@model Cube_4.models.Commande
+
+@{
+    ViewData["Title"] = "Create";
+}
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Cube_4.models.User> SignInManager
+@inject UserManager<Cube_4.models.User> UserManager
+
+<h1>Create</h1>
+
+<h4>Commande</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddCommand">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Article" class="control-label"></label>
+                <select asp-for="Article.Id" class ="form-control" asp-items="ViewBag.Article"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Quantite" class="control-label"></label>
+                <input asp-for="Quantite" class="form-control" />
+                <span asp-validation-for="Quantite" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+            <input asp-for="User" type="hidden">
+            <span type="hidden" asp-validation-for="User" class="text-danger">@if (SignInManager.IsSignedIn(User))
+                {
+                    @User.Identity?.Name
+                }
+            </span>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <span>Commande Fournisseur</span><input class="form-check-input" asp-for="isFournisseur" /> 
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Commander" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Retour aux commandes</a>
+</div>
+

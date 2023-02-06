@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cube_4", "Cube_4.csproj", "{EC18B5CC-016C-402B-AFE2-40580E9C7C81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EC18B5CC-016C-402B-AFE2-40580E9C7C81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC18B5CC-016C-402B-AFE2-40580E9C7C81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC18B5CC-016C-402B-AFE2-40580E9C7C81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC18B5CC-016C-402B-AFE2-40580E9C7C81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AAD4410C-AE24-450F-9D79-318AC84D3297}
+	EndGlobalSection
+EndGlobal
