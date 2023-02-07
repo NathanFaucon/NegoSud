@@ -1,4 +1,5 @@
 ﻿using CUBE_4.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -15,6 +16,7 @@ namespace CUBE_4.Controllers
 
         public IActionResult Index()
         {
+
             return View();
         }
 

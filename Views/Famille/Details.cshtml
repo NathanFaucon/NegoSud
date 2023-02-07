@@ -3,6 +3,9 @@
 @{
     ViewData["Title"] = "Details";
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Cube_4.models.User> SignInManager
+@inject UserManager<Cube_4.models.User> UserManager
 
 <h1>Details</h1>
 
@@ -25,6 +28,9 @@
     </dl>
 </div>
 <div>
-    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+    {
+        <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> <span> | </span>
+    }
     <a asp-action="Index">Back to List</a>
 </div>

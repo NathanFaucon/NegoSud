@@ -3,6 +3,9 @@
 @{
     ViewData["Title"] = "Articles";
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Cube_4.models.User> SignInManager
+@inject UserManager<Cube_4.models.User> UserManager
 
 <h1>Articles</h1>
 
@@ -43,9 +46,16 @@
                 @Html.DisplayFor(modelItem => item.Fournisseur.Nom)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Modifier</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Détails</a> |
-                <a asp-action="DeleteArticle" asp-route-id="@item.Id">Supprimer</a>
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Id">Modifier</a> <span> | </span>
+                }
+                <a asp-action="Details" asp-route-id="@item.Id">Détails</a> 
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <span> | </span>
+                    <a asp-action="DeleteArticle" asp-route-id="@item.Id">Supprimer</a>
+                }
             </td>
         </tr>
 }
