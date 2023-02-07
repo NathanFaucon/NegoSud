@@ -80,9 +80,9 @@ namespace Cube_4.Controllers
         }
 
         [HttpPost("commande")]
-        public IActionResult AddCommand(CommandeDTO newCommand, int quantite, bool isFournisseur)
+        public IActionResult AddCommand(CommandeDTO newCommand, int quantite, string UserId, bool isFournisseur)
         {
-            User? findUser = context.Users.FirstOrDefault(x => x.Id == newCommand.User.Id);
+            User? findUser = context.Users.FirstOrDefault(x => x.Id == UserId);
             Article? findArticle = context.Articles.FirstOrDefault(x => x.Id == newCommand.Article.Id);
 
             if (findUser == null || findArticle == null)
