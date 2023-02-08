@@ -8,10 +8,12 @@
 @inject UserManager<Cube_4.models.User> UserManager
 
 <h1>Articles</h1>
+@if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin")){
+    <p>
+        <a asp-action="Create">Ajouter un Article</a>
+    </p>
+}
 
-<p>
-    <a asp-action="Create">Ajouter un Article</a>
-</p>
 <table class="table">
     <thead>
         <tr>

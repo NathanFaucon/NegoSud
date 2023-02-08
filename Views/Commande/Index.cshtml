@@ -3,11 +3,14 @@
 @{
     ViewData["Title"] = "Commandes";
 }
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Cube_4.models.User> SignInManager
+@inject UserManager<Cube_4.models.User> UserManager
 
 <h1>Commandes</h1>
 
 <p>
-    <a asp-action="Create">Ajouter une commande</a>
+    <a asp-action="Create">Passer une commande</a>
 </p>
 <table class="table">
     <thead>
@@ -49,7 +52,10 @@
                 @Html.DisplayFor(modelItem => item.isFournisseur)
             </td>
             <td>
-                <a asp-action="DeleteCommand" asp-route-id="@item.Id">Supprimer</a>
+                @if (SignInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+                {
+                    <a asp-action="DeleteCommand" asp-route-id="@item.Id">Supprimer</a>
+                }
             </td>
         </tr>
 }

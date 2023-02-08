@@ -14,6 +14,8 @@
     <None Include="Views\Shared\_Layout.cshtml" />
     <None Include="Views\Shared\_LoginPartial.cshtml" />
     <None Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+    <None Include="wwwroot\css\img\image1.png" />
+    <None Include="wwwroot\css\img\wine-glass.png" />
   </ItemGroup>
 
   <ItemGroup>

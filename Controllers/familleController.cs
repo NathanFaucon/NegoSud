@@ -125,12 +125,18 @@ namespace Cube_4.Controllers
         public IActionResult DeleteFamille(int Id)
         {
             Famille? findFamille = context.Familles.FirstOrDefault(x => x.Id == Id);
-
+            Article? findArticle = context.Articles.FirstOrDefault(x => x.Famille.Id == Id);
             if (findFamille == null)
             {
                 return NotFound(new
                 {
                     Message = "Aucune famille trouvé avec cet ID !"
+                });
+            }else if (findArticle != null)
+            {
+                return BadRequest(new
+                {
+                    Message = "Un article est de cette famille, suppression impossible"
                 });
             }
             else

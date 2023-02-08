@@ -121,12 +121,19 @@ namespace Cube_4.Controllers
         public IActionResult DeleteFournisseur(int Id)
         {
             Fournisseur? findFournisseur = context.Fournisseurs.FirstOrDefault(x => x.Id == Id);
-
+            Article? findArticle = context.Articles.FirstOrDefault(x => x.Fournisseur.Id == Id);
             if (findFournisseur == null)
             {
                 return NotFound(new
                 {
                     Message = "Aucun Fournisseur trouvé avec cet ID !"
+                });
+            }
+            else if (findArticle != null)
+            {
+                return BadRequest(new
+                {
+                    Message = "Un article vient de  ce fournisseur, suppression impossible"
                 });
             }
             else
