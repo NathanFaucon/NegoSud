@@ -3,7 +3,12 @@
 @{
     ViewData["Title"] = "Edit";
 }
-
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Cube_4.models.User> SignInManager
+@inject UserManager<Cube_4.models.User> UserManager
+@if (!SignInManager.IsSignedIn(User) || !User.IsInRole("Admin")){
+    <p>Accès refusé</p>
+}else{
 <h1>Edit</h1>
 
 <h4>Famille</h4>
@@ -28,7 +33,7 @@
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
-
+}
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }

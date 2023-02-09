@@ -13,6 +13,11 @@
         <a asp-action="Create">Ajouter un Article</a>
     </p>
 }
+@if (SignInManager.IsSignedIn(User)){
+    <p>
+        <a href="Commande/Create">Passer une commande</a>
+    </p>
+}
 
 <table class="table">
     <thead>

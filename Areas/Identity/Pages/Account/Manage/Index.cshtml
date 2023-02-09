@@ -4,7 +4,12 @@
     ViewData["Title"] = "Profile";
     ViewData["ActivePage"] = ManageNavPages.Index;
 }
-
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<Cube_4.models.User> SignInManager
+@inject UserManager<Cube_4.models.User> UserManager
+@if (!SignInManager.IsSignedIn(User) || !User.IsInRole("Admin")){
+    <p>Accès refusé</p>
+}else{
 <h3>@ViewData["Title"]</h3>
 <partial name="_StatusMessage" for="StatusMessage" />
 <div class="row">
@@ -24,7 +29,7 @@
         </form>
     </div>
 </div>
-
+}
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }

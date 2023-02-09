@@ -6,6 +6,9 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<Cube_4.models.User> SignInManager
 @inject UserManager<Cube_4.models.User> UserManager
+@if (!SignInManager.IsSignedIn(User) || !User.IsInRole("Admin")){
+    <p>Accès refusé</p>
+}else{
 <h1>Create</h1>
 
 <h4>Commande</h4>
@@ -45,6 +48,6 @@
 </div>
 
 <div>
-    <a asp-action="Index">Retour aux commandes</a>
+    <a href="/Article/Index">Retour aux articles</a>
 </div>
-
+}

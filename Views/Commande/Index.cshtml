@@ -6,7 +6,9 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<Cube_4.models.User> SignInManager
 @inject UserManager<Cube_4.models.User> UserManager
-
+@if (!SignInManager.IsSignedIn(User) || !User.IsInRole("Admin")){
+    <p>Accès refusé</p>
+}else{
 <h1>Commandes</h1>
 
 <p>
@@ -61,3 +63,4 @@
 }
     </tbody>
 </table>
+}
